@@ -16,7 +16,6 @@ const Movies: React.FC = () => {
   const movieState = useSelector((state: RootStateOrAny) => state.movies);
   const movies = movieState.movieList;
   const { loading, errors } = movieState;
-  console.log(loading, errors);
   return (
     <>
       {!loading ? (
