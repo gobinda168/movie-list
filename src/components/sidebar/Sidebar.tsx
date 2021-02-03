@@ -19,7 +19,7 @@ const initialMenuItems = [
     menuItem: 'Favourites',
     selected: false,
     badge: true,
-    link: '/favourites',
+    link: '/favourite',
   },
 ];
 
