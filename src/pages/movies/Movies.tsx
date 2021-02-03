@@ -7,6 +7,7 @@ import MovieSearchForm from '../../components/body/MovieSearchForm';
 import Loader from '../../components/common/Loader';
 import MobileRow from '../../components/common/MobileRow';
 import RichText from '../../components/common/RichText';
+import RoundedButton from '../../components/common/RoundedButton';
 import Row from '../../components/common/Row';
 import SVG from '../../components/common/SVG';
 import { Movie } from '../../redux/reducers/movies';

@@ -15,9 +15,7 @@ const MovieSearchForm: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const handleSearch = (data: { search: string; filter: string }) => {
-    // console.log(data);
     const url = `${baseUrl}?apikey=10cf295b&s=${data.search}&type=${data.filter}`;
-    // console.log(url);
     dispatch(fetchMovieList(url));
     history.push('/movies');
   };

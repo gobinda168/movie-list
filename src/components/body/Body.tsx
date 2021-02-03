@@ -17,27 +17,30 @@ const Body: React.FC = () => {
       <SearboxContainer>
         <MovieSearchForm />
       </SearboxContainer>
-
-      <Spacer margin="2rem 0">
-        <Row justifyContent="center">
-          <RichText size="2rem" bold>
-            FAVOURITES
-          </RichText>
-        </Row>
-      </Spacer>
-      <MoviesContainer>
-        {movies
-          .slice(0, 8)
-          .map(({ title, poster, releaseDate, imdbID }: any) => (
-            <MovieCard
-              key={imdbID}
-              title={title}
-              poster={poster}
-              releaseDate={releaseDate}
-              imdbID={imdbID}
-            />
-          ))}
-      </MoviesContainer>
+      {movies.length && (
+        <>
+          <Spacer margin="2rem 0">
+            <Row justifyContent="center">
+              <RichText size="2rem" bold>
+                FAVOURITES
+              </RichText>
+            </Row>
+          </Spacer>
+          <MoviesContainer>
+            {movies
+              .slice(0, 8)
+              .map(({ title, poster, releaseDate, imdbID }: any) => (
+                <MovieCard
+                  key={imdbID}
+                  title={title}
+                  poster={poster}
+                  releaseDate={releaseDate}
+                  imdbID={imdbID}
+                />
+              ))}
+          </MoviesContainer>
+        </>
+      )}
     </BodyContainer>
   );
 };
