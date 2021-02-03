@@ -22,7 +22,7 @@ const Navbar: React.FC<Props> = ({ toggleSidebar }: Props) => {
     <TopNavigationBar>
       <MobileRow justifyContent="space-between" padding="0 2.5rem">
         <Link to="/">
-          <SVG src={pathUtil.getIconPath('logo.svg')} />
+          <SVG src={pathUtil.getIconPath('logo.svg')} cursor="pointer" />
         </Link>
         <WebView>
           <Row spacing="1rem">

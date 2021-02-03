@@ -26,15 +26,17 @@ const Body: React.FC = () => {
         </Row>
       </Spacer>
       <MoviesContainer>
-        {movies.map(({ title, poster, releaseDate, imdbID }: any) => (
-          <MovieCard
-            key={imdbID}
-            title={title}
-            poster={poster}
-            releaseDate={releaseDate}
-            imdbID={imdbID}
-          />
-        ))}
+        {movies
+          .slice(0, 8)
+          .map(({ title, poster, releaseDate, imdbID }: any) => (
+            <MovieCard
+              key={imdbID}
+              title={title}
+              poster={poster}
+              releaseDate={releaseDate}
+              imdbID={imdbID}
+            />
+          ))}
       </MoviesContainer>
     </BodyContainer>
   );

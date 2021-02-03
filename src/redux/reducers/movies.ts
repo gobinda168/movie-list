@@ -4,7 +4,7 @@ import types from '../actions/types';
 interface State {
   movieList: Movie[];
   loading: boolean;
-  errors: string;
+  errors: null | string;
   movie: any;
 }
 interface Action {
@@ -15,7 +15,7 @@ interface Action {
 const initialState: State = {
   movieList: [],
   loading: false,
-  errors: '',
+  errors: null,
   movie: null,
 };
 
@@ -26,25 +26,19 @@ export interface Movie {
   imdbID: string;
   Poster: string;
 }
-interface ResponseError {
-  Response: string;
-  Error: string;
-}
 
 const fetchMovies = (state: State, payload: Movie[]) => {
-  return { ...state, movieList: payload };
+  return { ...state, loading: false, movieList: payload };
 };
-const handleFetchFailed = (state: State, payload: ResponseError) => {
-  const newError = payload.Error;
-  return { ...state, loading: false, errors: newError, movieList: [] };
+const handleFetchFailed = (state: State, payload: string) => {
+  return { ...state, loading: false, errors: payload, movieList: [] };
 };
 
 const fetchMovie = (state: State, payload: any) => {
-  return { ...state, movie: payload };
+  return { ...state, loading: false, movie: payload };
 };
-const handleFetchMovieFailed = (state: State, payload: ResponseError) => {
-  const newError = payload.Error;
-  return { ...state, loading: false, errors: newError, movie: null };
+const handleFetchMovieFailed = (state: State, payload: string) => {
+  return { ...state, loading: false, errors: payload, movie: null };
 };
 const movies: Reducer<State, Action> = (
   state = initialState,

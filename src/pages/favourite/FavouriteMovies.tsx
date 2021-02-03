@@ -11,9 +11,6 @@ const FavouriteMovies: React.FC = () => {
   );
   return (
     <div>
-      <Row justifyContent="center" spacing="2rem 0 1rem 0">
-        <MovieSearchForm />
-      </Row>
       <MoviesContainer>
         {movies.map(({ title, poster, releaseDate, imdbID }: any) => (
           <MovieCard

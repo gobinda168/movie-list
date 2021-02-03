@@ -10,7 +10,7 @@ export const fetchMovieList = (url: string) => async (
     const { Search } = await res.json();
     dispatch({ type: types.FETCH_MOVIES_SUCCESS, payload: Search });
   } catch (error) {
-    dispatch({ type: types.FETCH_MOVIES_FAILURE, payload: error });
+    dispatch({ type: types.FETCH_MOVIES_FAILURE, payload: error.Error });
   }
 };
 export const fetchMovieById = (url: string) => async (

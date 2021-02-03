@@ -35,19 +35,19 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }: SidebarProps) => {
     const newMenu = [...initialMenuItems];
     newMenu[id] = { ...newMenu[id], selected: true };
     setMenuItems(newMenu);
+    if (id) toggleSidebar();
   };
 
   useEffect(() => {
     handleMenuSelect(0);
   }, []);
 
-  const { getImagePath } = pathUtil;
   return (
     <SidebarContainer borderRadius="0">
       <div>
         <Top>
           <MobileRow justifyContent="space-between">
-            <SVG src={pathUtil.getIconPath(`logo.svg`)} />
+            <SVG src={pathUtil.getIconPath(`logo.svg`)} cursor="pointer" />
             <MobileView>
               <IconButton onClick={toggleSidebar}>
                 <SVG src={pathUtil.getImagePath(`left.png`)} />
