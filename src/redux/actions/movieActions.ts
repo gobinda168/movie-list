@@ -8,7 +8,6 @@ export const fetchMovieList = (url: string) => async (
   try {
     const res = await fetch(url);
     const { Search } = await res.json();
-    console.log(Search);
     dispatch({ type: types.FETCH_MOVIES_SUCCESS, payload: Search });
   } catch (error) {
     dispatch({ type: types.FETCH_MOVIES_FAILURE, payload: error });
