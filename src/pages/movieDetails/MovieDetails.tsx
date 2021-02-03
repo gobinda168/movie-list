@@ -1,7 +1,9 @@
+import styled from '@emotion/styled';
 import React, { useEffect } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Column from '../../components/common/Column';
+import Loader from '../../components/common/Loader';
 import RichText from '../../components/common/RichText';
 import Row from '../../components/common/Row';
 import Spacer from '../../components/common/Spacer';
@@ -23,31 +25,30 @@ const MovieDetails: React.FC = () => {
   return (
     <>
       {movie ? (
-        <Row justifyContent="center" margin="1rem">
-          <Column>
-            <SVG src={movie?.Poster} width="200" height="300" />
-            <Spacer margin="1rem 0">
-              <RichText center size="1rem" bold>
-                {movie?.Title}
-              </RichText>
-            </Spacer>
-            <Spacer margin="1rem 0">
-              <RichText center size="1rem" bold>
-                {movie?.Released}
-              </RichText>
-            </Spacer>
-            <Spacer margin="1rem 0">
-              <RichText center size="1rem" bold>
-                {movie?.Title}
-              </RichText>
-            </Spacer>
-          </Column>
-        </Row>
+        <MovieDetailsContainer>
+          <SVG src={movie?.Poster} width="200" height="300" />
+          <Spacer margin="1rem 1rem">
+            <RichText size="2rem" bold>
+              {`${movie?.Title.toUpperCase()}`}
+            </RichText>
+            <RichText size="1rem">{`Released Date: ${movie?.Released}`}</RichText>
+            <RichText size="1rem">{`Genre: ${movie?.Genre}`}</RichText>
+            <RichText size="1rem">{`Director: ${movie?.Director}`}</RichText>
+            <RichText size="1rem">{`Actors: ${movie?.Actors}`}</RichText>
+            <RichText size="1rem">{`IMDB Rating: ${movie?.imdbRating}`}</RichText>
+            <RichText size="1rem">{`Production: ${movie?.Production}`}</RichText>
+          </Spacer>
+        </MovieDetailsContainer>
       ) : (
-        'Loading...'
+        <Loader />
       )}
     </>
   );
 };
 
+const MovieDetailsContainer = styled.div({
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '2rem',
+});
 export default MovieDetails;
