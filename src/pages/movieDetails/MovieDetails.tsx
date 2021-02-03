@@ -16,7 +16,7 @@ interface Params {
 const MovieDetails: React.FC = () => {
   const { id } = useParams<Params>();
   const dispatch = useDispatch();
-  const baseUrl = `http://www.omdbapi.com/`;
+  const baseUrl = `https://www.omdbapi.com/`;
   const url = `${baseUrl}?apikey=10cf295b&i=${id}`;
   const movie = useSelector((state: RootStateOrAny) => state.movies.movie);
   useEffect(() => {

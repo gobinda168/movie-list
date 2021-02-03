@@ -11,7 +11,7 @@ import Row from '../common/Row';
 
 const MovieSearchForm: React.FC = () => {
   const { handleSubmit, errors, register } = useForm();
-  const baseUrl = `http://www.omdbapi.com/`;
+  const baseUrl = `https://www.omdbapi.com/`;
   const history = useHistory();
   const dispatch = useDispatch();
   const handleSearch = (data: { search: string; filter: string }) => {
