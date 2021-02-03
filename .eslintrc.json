@@ -25,6 +25,7 @@
   ],
   "rules": {
     "import/prefer-default-export": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "no-use-before-define": "off",
     "import/extensions": [
       "error",

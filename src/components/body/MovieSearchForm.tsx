@@ -1,17 +1,26 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Colors from '../../constants/colors';
+import { fetchMovieList } from '../../redux/actions/movieActions';
 import Input from '../common/Input';
 import RoundedButton from '../common/RoundedButton';
 import Row from '../common/Row';
 
 const MovieSearchForm: React.FC = () => {
   const { handleSubmit, errors, register } = useForm();
-  const handleSearch = (data: unknown) => {
+  const baseUrl = `http://www.omdbapi.com/`;
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const handleSearch = (data: { search: string; filter: string }) => {
     // console.log(data);
+    const url = `${baseUrl}?apikey=10cf295b&s=${data.search}&type=${data.filter}`;
+    // console.log(url);
+    dispatch(fetchMovieList(url));
+    history.push('/movies');
   };
-
   return (
     <form onSubmit={handleSubmit(handleSearch)}>
       <Row spacing="0 .5rem">
@@ -22,10 +31,10 @@ const MovieSearchForm: React.FC = () => {
           register={register}
         />
         <Dropdown name="filter" ref={register()}>
-          <option value="all">All</option>
-          <option value="movies">Movies</option>
+          <option value="">All</option>
+          <option value="movie">Movies</option>
           <option value="series">Series</option>
-          <option value="episodes">Episodes</option>
+          <option value="episode">Episodes</option>
         </Dropdown>
         <RoundedButton background={Colors.darkestGrey}>Search</RoundedButton>
       </Row>
@@ -43,6 +52,10 @@ const Dropdown = styled.select({
   padding: '.75rem',
   ':active': {
     backgroundColor: Colors.darkGrey,
+  },
+  '@media(max-width:500px)': {
+    width: '85vw',
+    paddingLeft: '1.2rem',
   },
 });
 export default MovieSearchForm;

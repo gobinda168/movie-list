@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Body from '../../components/body/Body';
+import MobileView from '../../components/common/MobileView';
 import Layout from '../../components/layout/Layout';
+import Sidebar from '../../components/sidebar/Sidebar';
 
 const Home: React.FC = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -13,7 +15,9 @@ const Home: React.FC = () => {
 
   return (
     <Layout>
-      {/* {showSidebar && <Sidebar toggleSidebar={toggleSidebar} />} */}
+      <MobileView>
+        {showSidebar && <Sidebar toggleSidebar={toggleSidebar} />}
+      </MobileView>
       <Body toggleSidebar={toggleSidebar} />
     </Layout>
   );

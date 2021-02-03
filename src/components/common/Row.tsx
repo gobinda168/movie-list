@@ -14,7 +14,7 @@ const Row = styled.div(
       justifyContent: 'space-around',
       alignItems: 'center',
       textAlign: 'center',
-      div: {
+      '>*': {
         margin: '.41rem',
       },
     },

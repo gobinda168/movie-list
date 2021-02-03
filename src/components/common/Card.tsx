@@ -3,6 +3,7 @@ import Colors from '../../constants/colors';
 
 const Card = styled.div((props: { shadow?: string; hover?: boolean }) => ({
   backgroundColor: 'white',
+  width: '300px',
   padding: '1rem',
   boxShadow: props.shadow || `0px 5px 10px ${Colors.sandyBrown}`,
   border: '1px solid #ECECEC',

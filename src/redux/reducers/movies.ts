@@ -4,20 +4,20 @@ import types from '../actions/types';
 interface State {
   movieList: Movie[];
   loading: boolean;
-  errors: string[];
+  errors: string;
 }
 interface Action {
   type: string;
-  payload: Movie[];
+  payload: any;
 }
 
 const initialState: State = {
   movieList: [],
   loading: false,
-  errors: [],
+  errors: '',
 };
 
-interface Movie {
+export interface Movie {
   Title: string;
   Year: string;
   Type: string;
@@ -33,9 +33,9 @@ const fetchMovies = (state: State, payload: Movie[]) => {
   const newMovies = [...payload];
   return { ...state, movieList: payload };
 };
-const handleFetchFailed = (state: State, payload: any) => {
-  const newError = [...payload];
-  return { ...state, loading: false, errors: [...payload] };
+const handleFetchFailed = (state: State, payload: ResponseError) => {
+  const newError = payload.Error;
+  return { ...state, loading: false, errors: newError, movieList: [] };
 };
 
 const movies: Reducer<State, Action> = (

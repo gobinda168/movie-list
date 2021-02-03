@@ -22,6 +22,10 @@ const RoundedButton = styled.button(
       backgroundColor: Colors.darkGrey,
       color: Colors.white,
     },
+    '@media(max-width:500px)': {
+      width: '85vw',
+      paddingLeft: '1.2rem',
+    },
   })
 );
 
