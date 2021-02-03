@@ -2,7 +2,12 @@ import styled from '@emotion/styled';
 import Colors from '../../constants/colors';
 
 const RoundedButton = styled.button(
-  (props: { background?: string; color?: string }) => ({
+  (props: {
+    background?: string;
+    color?: string;
+    hoverColor?: string;
+    hoverBackground?: string;
+  }) => ({
     backgroundColor: props.background || Colors.midNightBlue,
     outline: 'none',
     color: props.color || Colors.white,
@@ -14,7 +19,7 @@ const RoundedButton = styled.button(
     height: '2.7rem',
     cursor: 'pointer',
     ':hover': {
-      backgroundColor: Colors.slateBlue,
+      backgroundColor: Colors.darkGrey,
       color: Colors.white,
     },
   })

@@ -24,13 +24,13 @@ const Input: React.FC<Props> = ({
   return (
     <div>
       <FlatInput active={fieldStatus} onClick={() => setFieldStatus(true)}>
-        <div className="label">{fieldLabel}</div>
         <input
           type="text"
           onBlur={toggleFieldStatus}
           name={name}
           className="input"
           ref={register({ required: true })}
+          placeholder={fieldLabel}
         />
       </FlatInput>
       <FieldError>
@@ -68,25 +68,23 @@ const FlatInput = styled.div((props: { active: boolean }) => ({
   borderColor: !props.active ? 'rgba(60,73,138,0.42)' : Colors.darkSlateBlue,
   borderRadius: '4px',
   position: 'relative',
-  margin: '.1rem',
+  margin: '0.1rem',
 
-  '.label': {
-    position: 'absolute',
-    padding: '0 .72rem',
-    top: props.active ? '0' : '35%',
-    '@media(max-width:500px)': {
-      top: props.active ? '-10px' : '17%',
-      fontSize: '.71rem',
-    },
-  },
+  // '.label': {
+  //   position: 'absolute',
+  //   padding: '0 .72rem',
+  //   top: props.active ? '0' : '35%',
+  //   '@media(max-width:500px)': {
+  //     top: props.active ? '-10px' : '17%',
+  //     fontSize: '.71rem',
+  //   },
+  // },
   '.input': {
     height: '100%',
-    width: '100%',
-    position: 'absolute',
-    bottom: '0',
+    width: '93%',
     border: 'none',
     backgroundColor: 'transparent',
-    padding: '0 .7rem',
+    padding: '0 .75rem',
     fontSize: '1.1rem',
     ':focus': {
       outline: 'none',

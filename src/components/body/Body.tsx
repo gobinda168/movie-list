@@ -25,10 +25,13 @@ const Body: React.FC<Props> = ({ toggleSidebar }: Props) => {
     <BodyContainer>
       <TopNavigationBar>
         <Row justifyContent="space-between" spacing="0 1rem">
-          <div>logo</div>
+          <div>
+            <SVG src={pathUtil.getIconPath('logo.svg')} />
+          </div>
           <Row spacing="1rem">
             <div>Home</div>
             <div>Movies</div>
+            <div>Favourite</div>
           </Row>
         </Row>
       </TopNavigationBar>
@@ -43,6 +46,8 @@ export default Body;
 
 const TopNavigationBar = styled.nav({
   height: '3rem',
+  padding: '1rem 0',
+  position: 'sticky',
   backgroundColor: Colors.darkestGrey,
   color: Colors.white,
 });
@@ -66,7 +71,7 @@ const BodyContainer = styled.div({
 
 const SearboxContainer = styled.div({
   backgroundColor: Colors.aliceBlue,
-  height: 'calc(100vh - 3rem)',
+  height: 'calc(100vh - 5rem)',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
