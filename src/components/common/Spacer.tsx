@@ -5,8 +5,10 @@ interface SpacerProps {
   padding?: string;
 }
 const Spacer = styled.div(({ margin, padding }: SpacerProps) => ({
-  margin,
-  padding,
+  '>div': {
+    margin,
+    padding,
+  },
 }));
 
 export default Spacer;

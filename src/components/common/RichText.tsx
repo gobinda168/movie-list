@@ -6,11 +6,13 @@ const RichText = styled.div(
     bold?: boolean;
     size?: string;
     spacing?: string;
+    center?: boolean;
   }) => ({
     color: props.color,
     fontSize: props.size,
     fontWeight: props.bold ? 'bold' : 'inherit',
     padding: props.spacing,
+    textAlign: props.center ? 'center' : 'start',
   })
 );
 

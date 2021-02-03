@@ -6,6 +6,7 @@ const Row = styled.div(
     display: 'flex',
     justifyContent: props.justifyContent || 'flex-start',
     alignItems: 'center',
+    margin: props.margin,
     '>*': {
       margin: props.spacing,
     },
