@@ -19,10 +19,8 @@ export const fetchMovieById = (url: string) => async (
 ): Promise<any> => {
   dispatch({ type: types.FETCH_MOVIEBYID_STARTED });
   try {
-    console.log('url', url);
     const res = await fetch(url);
     const movie = await res.json();
-    console.log('Byid', movie);
     dispatch({ type: types.FETCH_MOVIEBYID_SUCCESS, payload: movie });
   } catch (error) {
     dispatch({ type: types.FETCH_MOVIEBYID_FAILURE, payload: error });
