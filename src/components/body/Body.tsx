@@ -1,25 +1,57 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import Colors from '../../constants/colors';
+import RichText from '../common/RichText';
+import Row from '../common/Row';
+import Spacer from '../common/Spacer';
+import MovieCard from './MovieCard';
 import MovieSearchForm from './MovieSearchForm';
 
-interface Props {
-  toggleSidebar: () => void;
-}
-const Body: React.FC<Props> = ({ toggleSidebar }: Props) => {
+const Body: React.FC = () => {
+  const movies = useSelector(
+    (state: RootStateOrAny) => state.favourites.movies
+  );
   return (
     <BodyContainer>
       <SearboxContainer>
         <MovieSearchForm />
       </SearboxContainer>
+
+      <Spacer margin="2rem 0">
+        <Row justifyContent="center">
+          <RichText size="2rem" bold>
+            FAVOURITES
+          </RichText>
+        </Row>
+      </Spacer>
+      <MoviesContainer>
+        {movies.map(({ title, poster, releaseDate, imdbID }: any) => (
+          <MovieCard
+            key={imdbID}
+            title={title}
+            poster={poster}
+            releaseDate={releaseDate}
+            imdbID={imdbID}
+          />
+        ))}
+      </MoviesContainer>
     </BodyContainer>
   );
 };
 
 export default Body;
 
+const MoviesContainer = styled.div({
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+  '>div': {
+    margin: '1rem',
+  },
+});
 const BodyContainer = styled.div({
-  backgroundColor: 'white',
+  backgroundColor: Colors.white,
   paddingBottom: '4rem',
   '@media(max-width:500px)': {
     paddingBottom: '1rem',
@@ -27,8 +59,9 @@ const BodyContainer = styled.div({
 });
 
 const SearboxContainer = styled.div({
-  height: 'calc(100vh - 5rem)',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  background: Colors.white,
+  flexGrow: 1,
 });

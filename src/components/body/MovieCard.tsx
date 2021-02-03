@@ -6,6 +6,7 @@ import pathUtil from '../../utils/assetsPath';
 import AnimatedAsset from '../common/AnimatedAsset';
 import Card from '../common/Card';
 import Column from '../common/Column';
+import MobileRow from '../common/MobileRow';
 import RichText from '../common/RichText';
 import Row from '../common/Row';
 import SVG from '../common/SVG';
@@ -40,7 +41,7 @@ const MovieCard: React.FC<Props> = ({
       onMouseOver={() => setCardHover(true)}
       onMouseLeave={() => setCardHover(false)}
     >
-      <Row justifyContent="space-between">
+      <MobileRow justifyContent="space-between">
         <Link to={`/movieDetails/${imdbID}`}>
           <AnimatedAsset
             src={poster}
@@ -58,10 +59,6 @@ const MovieCard: React.FC<Props> = ({
             </RichText>
           </Link>
           <RichText bold>{releaseDate}</RichText>
-          {/* <SVG
-              src={pathUtil.getImagePath('arrowRightBlack.png')}
-              cursor="pointer"
-            /> */}
         </Column>
         <div />
         <SVG
@@ -70,7 +67,7 @@ const MovieCard: React.FC<Props> = ({
           onClick={handleToggle}
         />
         {/* </Row> */}
-      </Row>
+      </MobileRow>
     </Card>
   );
 };

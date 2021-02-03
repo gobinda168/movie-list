@@ -1,11 +1,9 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { useSelector, RootStateOrAny } from 'react-redux';
-import { Link } from 'react-router-dom';
 import MovieCard from '../../components/body/MovieCard';
 import MovieSearchForm from '../../components/body/MovieSearchForm';
 import Row from '../../components/common/Row';
-import { Movie } from '../../redux/reducers/movies';
 
 const FavouriteMovies: React.FC = () => {
   const movies = useSelector(
@@ -17,11 +15,12 @@ const FavouriteMovies: React.FC = () => {
         <MovieSearchForm />
       </Row>
       <MoviesContainer>
-        {movies.map(({ title, poster, year, imdbID }: any) => (
+        {movies.map(({ title, poster, releaseDate, imdbID }: any) => (
           <MovieCard
+            key={imdbID}
             title={title}
             poster={poster}
-            releaseDate={year}
+            releaseDate={releaseDate}
             imdbID={imdbID}
           />
         ))}

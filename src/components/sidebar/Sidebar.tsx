@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import { RootStateOrAny, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Colors from '../../constants/colors';
 import pathUtil from '../../utils/assetsPath';
+import Badge from '../common/Badge';
 import MobileRow from '../common/MobileRow';
 import MobileView from '../common/MobileView';
 import SVG from '../common/SVG';
@@ -11,8 +13,14 @@ interface Props {
   borderRadius: string;
 }
 const initialMenuItems = [
-  { id: '1', menuItem: 'Home', selected: false, badge: false },
-  { id: '3', menuItem: 'Favourites', selected: false, badge: true },
+  { id: '1', menuItem: 'Home', selected: false, badge: false, link: '/' },
+  {
+    id: '3',
+    menuItem: 'Favourites',
+    selected: false,
+    badge: true,
+    link: '/favourites',
+  },
 ];
 
 interface SidebarProps {
@@ -49,16 +57,17 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }: SidebarProps) => {
         </Top>
         <Menu>
           {menuItems.map((menuItem, index) => (
-            <MenuItem
-              key={menuItem.id}
-              selected={menuItem.selected}
-              onClick={() => handleMenuSelect(index)}
-            >
-              <Text opacity="1" cursor="pointer">
-                {menuItem.menuItem}
-              </Text>
-              {menuItem.badge && <Badge>{badgeValue}</Badge>}
-            </MenuItem>
+            <Link to={menuItem.link} key={menuItem.id}>
+              <MenuItem
+                selected={menuItem.selected}
+                onClick={() => handleMenuSelect(index)}
+              >
+                <Text opacity="1" cursor="pointer">
+                  {menuItem.menuItem}
+                </Text>
+                {menuItem.badge && <Badge>{badgeValue}</Badge>}
+              </MenuItem>
+            </Link>
           ))}
         </Menu>
       </div>
@@ -75,18 +84,6 @@ const IconButton = styled.button({
     border: 'none',
     outline: 'none',
   },
-});
-
-const Badge = styled.div({
-  width: '32px',
-  height: '17px',
-  backgroundColor: Colors.gold,
-  borderRadius: '9px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  color: 'black',
-  marginLeft: '1rem',
 });
 
 const SidebarContainer = styled.div((props: Props) => ({

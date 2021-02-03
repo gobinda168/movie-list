@@ -5,20 +5,9 @@ import Layout from '../../components/layout/Layout';
 import Sidebar from '../../components/sidebar/Sidebar';
 
 const Home: React.FC = () => {
-  const [showSidebar, setShowSidebar] = useState(true);
-  useEffect(() => {
-    if (window.innerWidth < 500) setShowSidebar(false);
-  }, [window.innerWidth]);
-  const toggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-  };
-
   return (
     <Layout>
-      <MobileView>
-        {showSidebar && <Sidebar toggleSidebar={toggleSidebar} />}
-      </MobileView>
-      <Body toggleSidebar={toggleSidebar} />
+      <Body />
     </Layout>
   );
 };
