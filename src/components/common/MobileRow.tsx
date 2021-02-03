@@ -6,10 +6,12 @@ const MobileRow = styled.div(
     justifyContent?: string;
     mJustifyContent?: string;
     margin?: string;
+    padding?: string;
   }) => ({
     display: 'flex',
     justifyContent: props.justifyContent || 'flex-start',
     alignItems: 'center',
+    padding: props.padding,
     div: {
       margin: props.spacing,
     },

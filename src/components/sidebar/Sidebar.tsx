@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import Colors from '../../constants/colors';
 import pathUtil from '../../utils/assetsPath';
 import MobileRow from '../common/MobileRow';
@@ -11,7 +12,6 @@ interface Props {
 }
 const initialMenuItems = [
   { id: '1', menuItem: 'Home', selected: false, badge: false },
-  { id: '2', menuItem: 'Movies', selected: false, badge: false },
   { id: '3', menuItem: 'Favourites', selected: false, badge: true },
 ];
 
@@ -19,7 +19,9 @@ interface SidebarProps {
   toggleSidebar: () => void;
 }
 const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }: SidebarProps) => {
-  const badgeValue = 2;
+  const badgeValue = useSelector(
+    (state: RootStateOrAny) => state.favourites.movieList.length
+  );
   const [menuItems, setMenuItems] = useState(initialMenuItems);
   const handleMenuSelect = (id: number) => {
     const newMenu = [...initialMenuItems];
@@ -33,21 +35,17 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }: SidebarProps) => {
 
   const { getImagePath } = pathUtil;
   return (
-    <SidebarContainer borderRadius="0 47px 0 0">
+    <SidebarContainer borderRadius="0">
       <div>
         <Top>
           <MobileRow justifyContent="space-between">
-            <Avatar imageUrl={pathUtil.getImagePath(`profile@2x.png`)} />
+            <SVG src={pathUtil.getIconPath(`logo.svg`)} />
             <MobileView>
               <IconButton onClick={toggleSidebar}>
                 <SVG src={pathUtil.getImagePath(`left.png`)} />
               </IconButton>
             </MobileView>
           </MobileRow>
-          <Text>Jimmy Hendrix</Text>
-          <Text underline opacity="0.8" cursor="pointer">
-            View Profile
-          </Text>
         </Top>
         <Menu>
           {menuItems.map((menuItem, index) => (
@@ -64,30 +62,6 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }: SidebarProps) => {
           ))}
         </Menu>
       </div>
-      <FooterContainer>
-        <FooterTop>
-          <Text>My Mentor</Text>
-          <SVG
-            src={getImagePath('rightArrowSmall.png')}
-            alt="arrowRight"
-            cursor="pointer"
-          />
-        </FooterTop>
-        <FooterBottom>
-          <Text>Jimmy Page</Text>
-          <MobileRow spacing="1rem .3rem 0 0">
-            <CircleIcon>
-              <SVG src={getImagePath('call.svg')} cursor="pointer" />
-            </CircleIcon>
-            <CircleIcon>
-              <SVG src={getImagePath('mail.svg')} cursor="pointer" />
-            </CircleIcon>
-            <CircleIcon>
-              <SVG src={getImagePath('chat.svg')} cursor="pointer" />
-            </CircleIcon>
-          </MobileRow>
-        </FooterBottom>
-      </FooterContainer>
     </SidebarContainer>
   );
 };
@@ -115,56 +89,18 @@ const Badge = styled.div({
   marginLeft: '1rem',
 });
 
-const CircleIcon = styled.div({
-  width: '32px',
-  height: '32px',
-  borderRadius: '50%',
-  background: Colors.slateBlue,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  opacity: '0.7',
-  cursor: 'pointer',
-});
-
-const sidebarGradient =
-  'transparent linear-gradient(345deg, #262758 0%, #4042B1 100%) 0% 0% no-repeat padding-box';
 const SidebarContainer = styled.div((props: Props) => ({
   minWidth: '223px',
-  background: sidebarGradient,
+  background: Colors.darkestGrey,
   borderRadius: props.borderRadius,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  padding: '2rem 0',
   '@media(max-width:500px)': {
-    padding: '.51rem 0',
     height: '100vh',
   },
 }));
 
-const FooterContainer = styled.div({
-  backgroundColor: 'rgba(68,70,190,0.24)',
-  height: '10rem',
-  margin: '0 2rem',
-  borderRadius: '0px 23px 0px 24px',
-});
-
-const FooterTop = styled.div({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: '1rem 1.5rem 1rem 1rem',
-  borderBottom: '1px solid rgba(68,70,190,0.64)',
-  color: 'white',
-});
-
-const FooterBottom = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
-  padding: '1rem 1.5rem 1rem 1rem',
-  color: 'white',
-});
 const Avatar = styled.div((props: { imageUrl: string }) => ({
   height: '60px',
   width: '60px',
@@ -179,7 +115,7 @@ const Avatar = styled.div((props: { imageUrl: string }) => ({
 }));
 
 const Top = styled.div({
-  margin: '0 2.5rem',
+  margin: '1rem 2.5rem',
   color: 'white',
   fontsize: '1rem',
   div: {

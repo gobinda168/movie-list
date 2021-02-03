@@ -50,5 +50,9 @@ const MovieDetailsContainer = styled.div({
   display: 'flex',
   justifyContent: 'center',
   marginTop: '2rem',
+  '@media(max-width:500px)': {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
 });
 export default MovieDetails;
