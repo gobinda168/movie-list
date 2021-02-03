@@ -11,7 +11,6 @@ const FavouriteMovies: React.FC = () => {
   const movies = useSelector(
     (state: RootStateOrAny) => state.favourites.movies
   );
-  console.log(movies);
   return (
     <div>
       <Row justifyContent="center" spacing="2rem 0 1rem 0">

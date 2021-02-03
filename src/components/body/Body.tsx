@@ -18,16 +18,6 @@ const Body: React.FC<Props> = ({ toggleSidebar }: Props) => {
 
 export default Body;
 
-const IconButton = styled.button({
-  cursor: 'pointer',
-  backgroundColor: 'transparent',
-  border: 'none',
-  ':focus': {
-    border: 'none',
-    outline: 'none',
-  },
-});
-
 const BodyContainer = styled.div({
   backgroundColor: 'white',
   paddingBottom: '4rem',

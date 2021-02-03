@@ -10,11 +10,9 @@ interface Props {
   borderRadius: string;
 }
 const initialMenuItems = [
-  { id: '1', menuItem: 'Dashboard', selected: false, badge: false },
-  { id: '2', menuItem: 'Tasks', selected: false, badge: true },
-  { id: '3', menuItem: 'Gym Clubs', selected: false, badge: false },
-  { id: '4', menuItem: 'Your Connections', selected: false, badge: false },
-  { id: '5', menuItem: 'Settings', selected: false, badge: false },
+  { id: '1', menuItem: 'Home', selected: false, badge: false },
+  { id: '2', menuItem: 'Movies', selected: false, badge: false },
+  { id: '3', menuItem: 'Favourites', selected: false, badge: true },
 ];
 
 interface SidebarProps {

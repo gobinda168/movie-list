@@ -8,13 +8,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 10px;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
-/* a{
-    color: 'inherit';
-    text-decoration: 'inherit';
-    cursor: 'pointer';
-} */
+
 
 a{
   color: inherit;
