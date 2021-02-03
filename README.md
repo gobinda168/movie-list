@@ -17,6 +17,3 @@ Technologies use: ReactJs, Redux, Thunk, Typscipt, Emotion with Styled Component
 ![image](https://user-images.githubusercontent.com/18115891/106809492-c0733980-6691-11eb-8ffd-e4bdea8b955d.png)
 ![image](https://user-images.githubusercontent.com/18115891/106809685-fa444000-6691-11eb-9b4b-f7940a8b6c43.png)
 ![image](https://user-images.githubusercontent.com/18115891/106809728-07612f00-6692-11eb-85cf-7912346a3422.png)
-
-## Pending
-- Pagination
