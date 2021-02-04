@@ -4,19 +4,29 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Colors from '../../constants/colors';
-import { fetchMovieList } from '../../redux/actions/movieActions';
+import {
+  fetchMovieList,
+  storeUrlParams,
+} from '../../redux/actions/movieActions';
+import { API_KEY, BASE_URL } from '../../utils/config';
 import Input from '../common/Input';
 import RoundedButton from '../common/RoundedButton';
 import Row from '../common/Row';
 
 const MovieSearchForm: React.FC = () => {
   const { handleSubmit, errors, register } = useForm();
-  const baseUrl = `https://www.omdbapi.com/`;
   const history = useHistory();
   const dispatch = useDispatch();
-  const handleSearch = (data: { search: string; filter: string }) => {
-    const url = `${baseUrl}?apikey=10cf295b&s=${data.search}&type=${data.filter}`;
+  const handleSearch = ({
+    search,
+    filter,
+  }: {
+    search: string;
+    filter: string;
+  }) => {
+    const url = `${BASE_URL}?apikey=${API_KEY}&s=${search}&type=${filter}`;
     dispatch(fetchMovieList(url));
+    dispatch(storeUrlParams({ search, filter }));
     history.push('/movies');
   };
   return (

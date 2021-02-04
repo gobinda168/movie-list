@@ -17,7 +17,7 @@ const Body: React.FC = () => {
       <SearboxContainer>
         <MovieSearchForm />
       </SearboxContainer>
-      {movies.length && (
+      {movies.length > 0 && (
         <>
           <Spacer margin="2rem 0">
             <Row justifyContent="center">

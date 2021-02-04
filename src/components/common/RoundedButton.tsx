@@ -18,6 +18,7 @@ const RoundedButton = styled.button(
     borderRadius: '25px',
     height: '2.7rem',
     cursor: 'pointer',
+    margin: '0 1rem',
     ':hover': {
       backgroundColor: Colors.darkGrey,
       color: Colors.white,
@@ -25,6 +26,8 @@ const RoundedButton = styled.button(
     '@media(max-width:500px)': {
       width: '85vw',
       paddingLeft: '1.2rem',
+      margin: '0',
+      marginBottom: '.5rem',
     },
   })
 );

@@ -1,3 +1,4 @@
+import { url } from 'inspector';
 import { Reducer } from 'react';
 import types from '../actions/types';
 
@@ -6,6 +7,13 @@ interface State {
   loading: boolean;
   errors: null | string;
   movie: any;
+  urlParams: IUrlParam;
+  currentPage: number;
+}
+interface IUrlParam {
+  search: string;
+  filter: string;
+  page: number;
 }
 interface Action {
   type: string;
@@ -17,6 +25,8 @@ const initialState: State = {
   loading: false,
   errors: null,
   movie: null,
+  urlParams: { search: '', filter: '', page: 0 },
+  currentPage: 0,
 };
 
 export interface Movie {
@@ -40,11 +50,14 @@ const fetchMovie = (state: State, payload: any) => {
 const handleFetchMovieFailed = (state: State, payload: string) => {
   return { ...state, loading: false, errors: payload, movie: null };
 };
+
 const movies: Reducer<State, Action> = (
   state = initialState,
   { type, payload }
 ) => {
   switch (type) {
+    case types.STORE_URL_PARAMS_ON_SUCCESS:
+      return { ...state, urlParams: payload };
     case types.FETCH_MOVIES_STARTED:
       return { ...state, loading: true };
     case types.FETCH_MOVIES_SUCCESS:

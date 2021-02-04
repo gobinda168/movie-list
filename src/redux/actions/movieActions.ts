@@ -1,6 +1,18 @@
 import { Dispatch } from 'react';
 import types from './types';
 
+interface IUrlParams {
+  search: string;
+  filter: string;
+  page?: number;
+}
+
+export const storeUrlParams = (payload: IUrlParams) => (
+  dispatch: Dispatch<any>
+): void => {
+  dispatch({ type: types.STORE_URL_PARAMS_ON_SUCCESS, payload });
+};
+
 export const fetchMovieList = (url: string) => async (
   dispatch: Dispatch<any>
 ): Promise<any> => {

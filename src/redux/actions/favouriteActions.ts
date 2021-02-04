@@ -1,7 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { Dispatch } from 'react';
 import types from './types';
 
-export const toggleFavourite = (payload: any) => (dispatch: any) => {
+interface Movie {
+  title: string;
+  poster: string;
+  releaseDate: string;
+  imdbID: string;
+}
+export const toggleFavourite = (payload: Movie) => (
+  dispatch: Dispatch<any>
+): void => {
   dispatch({ type: types.TOGGLE_FAVOURITE, payload });
 };
