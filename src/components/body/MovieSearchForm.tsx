@@ -8,10 +8,10 @@ import {
   fetchMovieList,
   storeUrlParams,
 } from '../../redux/actions/movieActions';
-import { API_KEY, BASE_URL } from '../../utils/config';
 import Input from '../common/Input';
 import RoundedButton from '../common/RoundedButton';
 import Row from '../common/Row';
+import { API_KEY, BASE_URL } from '../../utils/config';
 
 const MovieSearchForm: React.FC = () => {
   const { handleSubmit, errors, register } = useForm();

@@ -98,19 +98,6 @@ const SidebarContainer = styled.div((props: Props) => ({
   },
 }));
 
-const Avatar = styled.div((props: { imageUrl: string }) => ({
-  height: '60px',
-  width: '60px',
-  borderRadius: '50%',
-  padding: '0',
-  backgroundImage: `url(${props.imageUrl})`,
-  border: '1px solid #A0A4DF',
-  backgroundPosition: 'center',
-  boxShadow: '0px 3px 6px #00000029',
-  backgroundSize: '80px 90px',
-  opacity: '0.85',
-}));
-
 const Top = styled.div({
   margin: '1rem 2.5rem',
   color: 'white',

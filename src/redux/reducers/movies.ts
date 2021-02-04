@@ -1,9 +1,9 @@
-import { url } from 'inspector';
 import { Reducer } from 'react';
+import { IMovie } from '../../interfaces/IMovie';
 import types from '../actions/types';
 
-interface State {
-  movieList: Movie[];
+interface IState {
+  movieList: IMovie[];
   loading: boolean;
   errors: null | string;
   movie: any;
@@ -20,7 +20,7 @@ interface Action {
   payload: any;
 }
 
-const initialState: State = {
+const initialState: IState = {
   movieList: [],
   loading: false,
   errors: null,
@@ -29,29 +29,21 @@ const initialState: State = {
   currentPage: 0,
 };
 
-export interface Movie {
-  Title: string;
-  Year: string;
-  Type: string;
-  imdbID: string;
-  Poster: string;
-}
-
-const fetchMovies = (state: State, payload: Movie[]) => {
+const fetchMovies = (state: IState, payload: IMovie[]) => {
   return { ...state, loading: false, movieList: payload };
 };
-const handleFetchFailed = (state: State, payload: string) => {
+const handleFetchFailed = (state: IState, payload: string) => {
   return { ...state, loading: false, errors: payload, movieList: [] };
 };
 
-const fetchMovie = (state: State, payload: any) => {
+const fetchMovie = (state: IState, payload: any) => {
   return { ...state, loading: false, movie: payload };
 };
-const handleFetchMovieFailed = (state: State, payload: string) => {
+const handleFetchMovieFailed = (state: IState, payload: string) => {
   return { ...state, loading: false, errors: payload, movie: null };
 };
 
-const movies: Reducer<State, Action> = (
+const movies: Reducer<IState, Action> = (
   state = initialState,
   { type, payload }
 ) => {

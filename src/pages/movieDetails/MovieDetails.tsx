@@ -2,13 +2,12 @@ import styled from '@emotion/styled';
 import React, { useEffect } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Column from '../../components/common/Column';
 import Loader from '../../components/common/Loader';
 import RichText from '../../components/common/RichText';
-import Row from '../../components/common/Row';
 import Spacer from '../../components/common/Spacer';
 import SVG from '../../components/common/SVG';
 import { fetchMovieById } from '../../redux/actions/movieActions';
+import { API_KEY, BASE_URL } from '../../utils/config';
 
 interface Params {
   id: string;
@@ -16,8 +15,7 @@ interface Params {
 const MovieDetails: React.FC = () => {
   const { id } = useParams<Params>();
   const dispatch = useDispatch();
-  const baseUrl = `https://www.omdbapi.com/`;
-  const url = `${baseUrl}?apikey=10cf295b&i=${id}`;
+  const url = `${BASE_URL}?apikey=${API_KEY}&i=${id}`;
   const movie = useSelector((state: RootStateOrAny) => state.movies.movie);
   useEffect(() => {
     dispatch(fetchMovieById(url));

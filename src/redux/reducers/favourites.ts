@@ -55,7 +55,6 @@ const farourites: Reducer<State, Action> = (
 ) => {
   switch (type) {
     case types.TOGGLE_FAVOURITE:
-      // console.log('action', payload);
       return updateFavouriteMovieList(state, payload);
     default:
       return state;

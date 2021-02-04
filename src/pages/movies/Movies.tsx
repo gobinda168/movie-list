@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import MovieCard from '../../components/body/MovieCard';
 import MovieSearchForm from '../../components/body/MovieSearchForm';
 import Loader from '../../components/common/Loader';
@@ -10,8 +9,8 @@ import RichText from '../../components/common/RichText';
 import RoundedButton from '../../components/common/RoundedButton';
 import Row from '../../components/common/Row';
 import SVG from '../../components/common/SVG';
+import { IMovie } from '../../interfaces/IMovie';
 import { fetchMovieList } from '../../redux/actions/movieActions';
-import { Movie } from '../../redux/reducers/movies';
 import pathUtil from '../../utils/assetsPath';
 import { API_KEY, BASE_URL } from '../../utils/config';
 
@@ -46,7 +45,7 @@ const Movies: React.FC = () => {
           {movies?.length ? (
             <Container>
               <MoviesContainer>
-                {movies.map(({ Title, Poster, Year, imdbID }: Movie) => (
+                {movies.map(({ Title, Poster, Year, imdbID }: IMovie) => (
                   <MovieCard
                     key={imdbID}
                     title={Title}

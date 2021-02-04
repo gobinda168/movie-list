@@ -69,16 +69,6 @@ const FlatInput = styled.div((props: { active: boolean }) => ({
   borderRadius: '4px',
   position: 'relative',
   margin: '0.1rem',
-
-  // '.label': {
-  //   position: 'absolute',
-  //   padding: '0 .72rem',
-  //   top: props.active ? '0' : '35%',
-  //   '@media(max-width:500px)': {
-  //     top: props.active ? '-10px' : '17%',
-  //     fontSize: '.71rem',
-  //   },
-  // },
   '.input': {
     height: '100%',
     width: '93%',
