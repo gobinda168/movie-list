@@ -57,8 +57,8 @@ const Movies: React.FC = () => {
                 ))}
               </MoviesContainer>
               <Pagination>
-                <RoundedButton onClick={nextPage}>Next</RoundedButton>
                 <RoundedButton onClick={previousPage}>Previous</RoundedButton>
+                <RoundedButton onClick={nextPage}>Next</RoundedButton>
               </Pagination>
             </Container>
           ) : (
