@@ -6,6 +6,7 @@ Technologies use: ReactJs, Redux, Thunk, Typscipt, Emotion with Styled Component
 - Mobile Responsiveness
 - Movie Page
 - Favourite List page with Localstorage
+- Pagination implemented
 
 # Preview
 ![image](https://user-images.githubusercontent.com/18115891/106808148-05966c00-6690-11eb-9f2f-4912de1f4043.png)
